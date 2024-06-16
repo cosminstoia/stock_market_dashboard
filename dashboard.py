@@ -3,8 +3,15 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import os
+from dotenv import load_dotenv
 
-api_key = 'X4SOFJGQ2QYS7ULY'
+
+load_dotenv()
+pwd = os.getenv('MY_PASSWORD')
+api_key = os.getenv('MY_API_KEY')
+if pwd is not None and key is not None:
+    print('It worked')
 
 # Function to get data from the API
 def get_stock_data(symbol, interval):
@@ -19,7 +26,7 @@ def get_stock_data(symbol, interval):
     
     response = requests.get(url)
     data = response.json()
-    print(f"API Response: {data}")
+    # print(f"API Response: {data}")
     return data
 
 # Function to update the stock data in the GUI
